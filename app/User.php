@@ -26,4 +26,30 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function roles()
+    {
+        return $this->belongsToMany('App\Role')->withTimestamps();
+    }
+
+    public function hasRole($role) {
+        if($this->roles()->where('name', $role)->first()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function workhours() {
+        return $this->hasMany('App\WorkHour');
+    }
+
+    public function freedays() {
+        return $this->hasMany('App\FreeDay');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
 }
