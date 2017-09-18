@@ -59,6 +59,8 @@
                                 <ul class="dropdown-menu" role="menu">
                                     @if(Auth::user()->hasRole('admin'))
                                     <li><a href="{{ route('dashboard') }}">Admin</a></li>
+                                    @else
+                                    <li><a href="{{ route('worker') }}">Worker</a></li>
                                     @endif
                                     <li>
                                         <a href="{{ route('logout') }}"
