@@ -19,8 +19,9 @@ class AdminController extends Controller
     public function profile(User $user){
 
         $workhours = $user->workhours()->paginate(10);
+        $freedays = $user->freedays()->paginate(10);
 
-        return view('admin.profile', compact('user', 'workhours'));
+        return view('admin.profile', compact('user', 'workhours', 'freedays'));
     }
 
 }
